@@ -1,29 +1,30 @@
 package main
 
 import (
-	"fmt"
 	"log"
-	"log/slog"
 	"os"
 )
 
 func main() {
-	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
-	logger.Info("Opening the file...")
-	// file, err := os.OpenFile("example.txt", os.O_RDWR|os.O_CREATE, 0644)
-	file, err := os.OpenFile("example.txt", os.O_RDWR, 0644)
+	file, err := os.OpenFile("example.txt", os.O_RDWR|os.O_CREATE, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Defer the closure of the file
+	// Defer file closure
 	defer func() {
-		fmt.Println("Closing the file")
+		log.Println("Closing the file.")
 		file.Close()
 	}()
 
-	fmt.Println("Performing some operations on the file")
-	// Perform some operations on the file
+	// Stacked defer. LIFO
+	for i := 0; i < 5; i++ {
+		defer log.Println(i)
+	}
 
-	fmt.Println("Function is about to end")
+	log.Println("Writing to file.")
+	_, err = file.WriteString("Golang.\n")
+	if err != nil {
+		log.Fatal(err)
+	}
 }
