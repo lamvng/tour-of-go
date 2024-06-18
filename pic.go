@@ -2,29 +2,15 @@ package main
 
 import "golang.org/x/tour/pic"
 
-func Pic(dx, dy int) [][]uint8 {
-	// Allocate two-dimensioanl array.
-	a := make([][]uint8, dy)
-	for i := 0; i < dy; i++ {
-		a[i] = make([]uint8, dx)
-	}
-
-	// Do something.
-	for i := 0; i < dy; i++ {
-		for j := 0; j < dx; j++ {
-			switch {
-			case j%15 == 0:
-				a[i][j] = 240
-			case j%3 == 0:
-				a[i][j] = 120
-			case j%5 == 0:
-				a[i][j] = 150
-			default:
-				a[i][j] = 100
-			}
+func Pic(dx, dy int) (picture [][]uint8) {
+	picture = make([][]uint8, dy)
+	for y := range picture {
+		picture[y] = make([]uint8, dx)
+		for x := range picture[y] {
+			picture[y][x] = uint8((x + y) / 2)
 		}
 	}
-	return a
+	return picture
 }
 
 func main() {
