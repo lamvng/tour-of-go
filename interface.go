@@ -29,6 +29,7 @@ func main() {
 	vertexValue, isVertex := i.(*Vertex)
 	fmt.Printf("%v %v\n", vertexValue, isVertex)
 	// If isVertex == false, and isVertex is not defined in the call, the program will panic
+	// Aka. Type assertion failed
 
 	// Type switch
 	// Multiple type assertion
