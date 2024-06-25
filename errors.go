@@ -22,7 +22,11 @@ func Sqrt(x float64, n int) (float64, error) {
 }
 
 func main() {
-	number := float64(-5)
+	number := float64(2)
 	number_sqrt, err := Sqrt(number, 10)
+	fmt.Printf("%v %v\n", number_sqrt, err)
+
+	number = float64(-2)
+	number_sqrt, err = Sqrt(number, 10)
 	fmt.Printf("%v %v\n", number_sqrt, err)
 }

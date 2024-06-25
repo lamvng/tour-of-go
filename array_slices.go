@@ -24,7 +24,7 @@ func main() {
 	// Change value of slice
 	slice_prime[3] = 17
 	printSlice(slice_prime)
-	fmt.Println(primes)
+	printSlice(primes[:])
 
 	// Slice literals
 	sequence_slice := []int{1, 2, 3, 4}
