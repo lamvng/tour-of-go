@@ -7,7 +7,7 @@ import (
 
 func say(s string) {
 	for i := 0; i < 5; i++ {
-		// If the Sleep() is commented. There is only "Main function" printed.
+		// If the Sleep() is commented. Output: Only "Main function" printed.
 		// Because the main function exits before the coroutine can execute.
 		time.Sleep(100 * time.Millisecond)
 		fmt.Println(s)
@@ -16,6 +16,6 @@ func say(s string) {
 
 // "Coroutine" and "Main function" are printed concurrently
 func main() {
-	go say("Coroutines")
+	go say("Goroutines")
 	say("Main function")
 }
